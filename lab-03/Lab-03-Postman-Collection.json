@@ -1,0 +1,243 @@
+{
+  "info": {
+    "name": "Kasula Srijan - Lab 03 REST API",
+    "_postman_id": "2c4cc2e8-03d1-4f2c-9a6e-3a4ec5df40a2",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000"
+    }
+  ],
+  "item": [
+    {
+      "name": "Create book - success",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/books",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"The Alchemist\",\n  \"author\": \"Paulo Coelho\",\n  \"price\": 299\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Create book - missing title (400)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/books",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"author\": \"Paulo Coelho\",\n  \"price\": 299\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Create book - missing author (400)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/books",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Test Book\",\n  \"price\": 199\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Create book - invalid price (400)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/books",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Test Book\",\n  \"author\": \"Test Author\",\n  \"price\": \"abc\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "List books",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/books"
+      }
+    },
+    {
+      "name": "Search books",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/books?search_q=Alch"
+      }
+    },
+    {
+      "name": "Sort books",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/books?order_by=price&order=DESC"
+      }
+    },
+    {
+      "name": "Pagination",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/books?limit=5&offset=0"
+      }
+    },
+    {
+      "name": "Price range",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/books?min_price=100&max_price=500"
+      }
+    },
+    {
+      "name": "Invalid limit (400)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/books?limit=0"
+      }
+    },
+    {
+      "name": "Invalid order (400)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/books?order=SIDEWAYS"
+      }
+    },
+    {
+      "name": "Get book by ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/books/1"
+      }
+    },
+    {
+      "name": "Get missing book (404)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/books/999999"
+      }
+    },
+    {
+      "name": "Update book",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/books/1",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"The Alchemist Updated\",\n  \"author\": \"Paulo Coelho\",\n  \"price\": 349\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Update missing book (404)",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/books/999999",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Missing\",\n  \"author\": \"Nobody\",\n  \"price\": 1\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Delete book",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": "{{baseUrl}}/books/1"
+      }
+    },
+    {
+      "name": "Delete missing book (404)",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": "{{baseUrl}}/books/999999"
+      }
+    },
+    {
+      "name": "Unknown route (404)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/unknown"
+      }
+    }
+  ]
+}

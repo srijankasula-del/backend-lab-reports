@@ -1,0 +1,13 @@
+{
+  "name": "kasula-srijan-lab03-rest-api",
+  "version": "1.0.0",
+  "description": "Lab 3 REST API with query parameters, validation and debugging",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "engines": {
+    "node": ">=22.5.0"
+  },
+  "dependencies": {}
+}

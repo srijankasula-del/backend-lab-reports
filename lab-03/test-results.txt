@@ -1,0 +1,9 @@
+POST /books -> 201 {"message": "Book created successfully", "book": {"id": 4, "title": "Deep Work", "author": "Cal Newport", "price": 399}}
+GET /books -> 200 {"message": "Books retrieved successfully", "books": [{"id": 1, "title": "The Alchemist", "author": "Paulo Coelho", "price": 299}, {"id": 2, "title": "Atomic Habits", "author": "James Clear", "price": 450}, {"id": 3, "title": "Clean Code", "author": "Robert C. Martin", "price": 650}, {"id": 4, "title": "Deep Work", "author": "Cal Newport", "price": 399}]}
+GET /books?search_q=Alch&order_by=price&order=DESC&limit=5&offset=0&min_price=100&max_price=500 -> 200 {"message": "Books retrieved successfully", "books": [{"id": 1, "title": "The Alchemist", "author": "Paulo Coelho", "price": 299}]}
+GET /books/1 -> 200 {"message": "Book retrieved successfully", "book": {"id": 1, "title": "The Alchemist", "author": "Paulo Coelho", "price": 299}}
+PUT /books/1 -> 200 {"message": "Book updated successfully", "book": {"id": 1, "title": "The Alchemist Updated", "author": "Paulo Coelho", "price": 349}}
+DELETE /books/1 -> 200 {"message": "Book deleted successfully"}
+POST /books -> 400 {"message": "title is required and must be a non-empty string"}
+GET /books/999999 -> 404 {"message": "Book not found"}
+GET /books?limit=0 -> 400 {"message": "limit must be an integer between 1 and 100"}
