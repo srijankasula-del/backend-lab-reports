@@ -4,7 +4,7 @@
 **Registration number:** 252U1R9062  
 **Section:** CSE GAI 2A S-024 304  
 
-**Live link:** Pending deployment. After deploying, replace this line with the public URL.
+**Live link:** https://labreport3.onrender.com/
 
 ## Objective
 Build a clean REST API with noun-based endpoints, query parameters, validation, consistent JSON responses and correct HTTP status codes.
